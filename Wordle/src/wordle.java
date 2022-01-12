@@ -7,7 +7,7 @@ public class wordle {
 
 	public static void wordle(String a) throws IOException {
 
-		String currentGuess = a;
+		String currentGuess = a.toLowerCase();
 
 		// read file to see if word exists
 		List<String> longList = new ArrayList<>();
@@ -47,10 +47,10 @@ public class wordle {
 		}
 
 		// outputs
-		if (answer.equalsIgnoreCase(currentGuess)) {
+		if (answer.equals(currentGuess)) {
 			System.out.println(">> Congratulations!! You got it!");
 			System.exit(0);
-		} else if (!answer.equalsIgnoreCase(currentGuess) && count == 5) {
+		} else if (!answer.equals(currentGuess) && count == 5) {
 			System.out.println(">> --GAME OVER--");
 			System.out.println(">> The word was: " + answer);
 			System.exit(0);
@@ -90,7 +90,7 @@ public class wordle {
 
 		Random rand = new Random(System.currentTimeMillis());
 		String word = hiddenList.get(rand.nextInt(hiddenList.size()));
-		return word;
+		return word.toLowerCase();
 	}
 
 	public static void main(String args[]) throws IOException {
